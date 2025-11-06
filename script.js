@@ -11,11 +11,17 @@ function showFooterBanner() {
 }
 
 function showModal() {
-  document.getElementById("modal").classList.remove("hide");
+  // Prevent showing modal if user already closed it
+	if (localStorage.getItem("modalClosed")) {
+		return;
+	}
+    document.getElementById("modal").classList.remove("hide");
 }
 
+// store flag that modal is closed
 function closeModal() {
   document.getElementById("modal").classList.add("hide");
+  localStorage.setItem("modalClosed", "true"); 
 }
 
 function closeTopBanner() {
